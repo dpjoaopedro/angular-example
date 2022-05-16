@@ -1,0 +1,6 @@
+<ng-container *ngFor="let post of posts$ | async">
+  <div>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+  </div>
+</ng-container>
