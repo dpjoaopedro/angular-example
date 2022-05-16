@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import {
+  map,
+  mergeMap,
+  catchError,
+  withLatestFrom,
+  filter,
+} from 'rxjs/operators';
 import { PostService } from '../services/post.service';
+import { Store } from '@ngrx/store';
 import * as PostActions from '../actions/post.actions';
+import * as fromPosts from '../selectors/post.selectors';
 
 @Injectable()
 export class PostEffects {
   loadMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PostActions.LOAD_POSTS.type),
+      withLatestFrom(this.store.select(fromPosts.selectPosts)),
+      filter(([_, posts]) => posts.length === 0),
       mergeMap(() =>
         this.postService.getAll().pipe(
           map((posts) => ({
@@ -22,5 +32,9 @@ export class PostEffects {
     )
   );
 
-  constructor(private actions$: Actions, private postService: PostService) {}
+  constructor(
+    private actions$: Actions,
+    private postService: PostService,
+    private store: Store
+  ) {}
 }

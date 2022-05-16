@@ -12,7 +12,12 @@ export class PostComponent implements OnInit {
   posts$ = this.store.select(fromPosts.selectPosts);
 
   constructor(private store: Store) {}
+  
   ngOnInit(): void {
+    this.loadPosts();
+  }
+
+  loadPosts() {
     this.store.dispatch(postsActions.LOAD_POSTS());
   }
 }
