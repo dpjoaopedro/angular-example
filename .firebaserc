@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-13-sandbox": {
+      "hosting": {
+        "angular-sandbox": [
+          "angular-13-sandbox"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-13-sandbox"
+  }
+}

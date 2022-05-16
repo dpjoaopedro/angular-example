@@ -109,6 +109,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular-sandbox:build:production",
+            "firebaseProject": "angular-13-sandbox",
+            "firebaseHostingSite": "angular-13-sandbox"
+          }
         }
       }
     }
