@@ -13,6 +13,8 @@ import { UIModule } from './shared/ui/ui.module';
 import { postReducer } from './reducers/posts.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PostEffects } from './effects/post.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, PostComponent, CommentsComponent],
@@ -25,6 +27,7 @@ import { PostEffects } from './effects/post.effects';
     UIModule,
     StoreModule.forRoot({ postState: postReducer }),
     EffectsModule.forRoot([PostEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],
