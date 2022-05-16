@@ -10,6 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { UIModule } from './shared/ui/ui.module';
+import { postReducer } from './reducers/posts.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PostEffects } from './effects/post.effects';
 
 @NgModule({
   declarations: [AppComponent, PostComponent, CommentsComponent],
@@ -17,10 +20,11 @@ import { UIModule } from './shared/ui/ui.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
     MaterialModule,
-    UIModule
+    UIModule,
+    StoreModule.forRoot({ postState: postReducer }),
+    EffectsModule.forRoot([PostEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
