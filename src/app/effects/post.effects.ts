@@ -24,7 +24,7 @@ export class PostEffects {
         this.postService.getAll().pipe(
           map((posts) => ({
             type: PostActions.LOAD_POSTS_SUCCESS.type,
-            posts: posts,
+            posts: posts.slice(0, 5),
           })),
           catchError(() => EMPTY)
         )
