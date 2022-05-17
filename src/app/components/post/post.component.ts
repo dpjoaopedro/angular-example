@@ -9,8 +9,8 @@ import * as postsActions from '../../actions/post.actions';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-  posts$ = this.store.select(fromPosts.selectPosts);
-  isPostsLoaded$ = this.store.select(fromPosts.isPostsLoaded);
+  posts$ = this.store.select(fromPosts.selectAll);
+  isPostsLoaded$ = this.store.select(fromPosts.isLoaded);
 
   constructor(private store: Store) {}
 

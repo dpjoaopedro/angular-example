@@ -1,1 +1,15 @@
-<p>comments works!</p>
+<ng-template #loading>
+  <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+</ng-template>
+<ng-container *ngIf="isCommentsLoaded$ | async; else loading">
+  <div class="comments" *ngFor="let comment of comments$ | async">
+    <mat-card>
+      <mat-card-title>{{ comment.name }}</mat-card-title>
+      <mat-card-content>
+        <p>
+          {{ comment.body }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>

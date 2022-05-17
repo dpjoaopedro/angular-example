@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { initialState } from 'src/app/reducers/posts.reducer';
+import { initialState } from 'src/app/reducers/post.reducer';
 
 import { PostComponent } from './post.component';
 

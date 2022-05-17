@@ -15,10 +15,10 @@ import * as fromPosts from '../selectors/post.selectors';
 
 @Injectable()
 export class PostEffects {
-  loadMovies$ = createEffect(() =>
+  loadPosts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PostActions.LOAD_POSTS.type),
-      withLatestFrom(this.store.select(fromPosts.selectPosts)),
+      withLatestFrom(this.store.select(fromPosts.selectAll)),
       filter(([_, posts]) => posts.length === 0),
       mergeMap(() =>
         this.postService.getAll().pipe(
