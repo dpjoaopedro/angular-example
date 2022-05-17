@@ -10,9 +10,10 @@ import * as postsActions from '../../actions/post.actions';
 })
 export class PostComponent implements OnInit {
   posts$ = this.store.select(fromPosts.selectPosts);
+  isPostsLoaded$ = this.store.select(fromPosts.isPostsLoaded);
 
   constructor(private store: Store) {}
-  
+
   ngOnInit(): void {
     this.loadPosts();
   }

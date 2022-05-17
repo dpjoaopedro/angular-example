@@ -1,5 +1,8 @@
-<ng-container *ngIf="posts$ | async as posts; else loading">
-  <div class="posts" *ngFor="let post of posts">
+<ng-template #loading>
+  <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+</ng-template>
+<ng-container *ngIf="isPostsLoaded$ | async; else loading">
+  <div class="posts" *ngFor="let post of posts$ | async">
     <mat-card>
       <mat-card-title>{{ post.title }}</mat-card-title>
       <mat-card-content>
@@ -14,6 +17,3 @@
     </mat-card>
   </div>
 </ng-container>
-<ng-template #loading>
-  <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
-</ng-template>
