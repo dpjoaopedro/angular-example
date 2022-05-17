@@ -21,4 +21,8 @@ export class PostComponent implements OnInit {
   loadPosts() {
     this.store.dispatch(postsActions.LOAD_POSTS());
   }
+
+  share(message: string) {
+    window.open('https://twitter.com/intent/tweet?text=' + message, '_blank');
+  }
 }
