@@ -7,3 +7,8 @@ export const selectPosts = createSelector(
   selectFeature,
   (state) => state.posts
 );
+
+export const isPostsLoaded = createSelector(
+  selectFeature,
+  (state) => state.posts.length > 0
+);

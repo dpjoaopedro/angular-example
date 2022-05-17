@@ -10,14 +10,19 @@ import * as postsActions from '../../actions/post.actions';
 })
 export class PostComponent implements OnInit {
   posts$ = this.store.select(fromPosts.selectPosts);
+  isPostsLoaded$ = this.store.select(fromPosts.isPostsLoaded);
 
   constructor(private store: Store) {}
-  
+
   ngOnInit(): void {
     this.loadPosts();
   }
 
   loadPosts() {
     this.store.dispatch(postsActions.LOAD_POSTS());
+  }
+
+  share(message: string) {
+    window.open('https://twitter.com/intent/tweet?text=' + message, '_blank');
   }
 }
