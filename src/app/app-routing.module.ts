@@ -6,6 +6,11 @@ import { PostComponent } from './components/post/post.component';
 const routes: Routes = [
   { path: 'posts', component: PostComponent },
   { path: 'comments', component: CommentComponent },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./components/user/user.module').then((user) => user.UsersModule),
+  },
 ];
 
 @NgModule({

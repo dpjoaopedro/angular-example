@@ -18,7 +18,6 @@ import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { commentReducer } from './reducers/comment.reducer';
 import { CommentEffects } from './effects/comment.effects';
-
 @NgModule({
   declarations: [AppComponent, PostComponent, CommentComponent],
   imports: [
