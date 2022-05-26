@@ -1,3 +1,17 @@
 <ng-container *ngIf="user$ | async as user">
-  <h3>{{ user.name }}</h3>
+  <div class="container">
+    <div class="user-datails">
+      <mat-card>
+        <h3>{{ user.name }}</h3>
+        <span>{{ user.email }}</span>
+      </mat-card>
+    </div>
+    <div class="user-posts">
+      <ng-container *ngFor="let post of posts$ | async">
+        <mat-card class="post">
+          <h3>{{ post.title }}</h3>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
 </ng-container>
